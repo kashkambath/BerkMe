@@ -15,6 +15,7 @@ restDf = pd.read_csv('cleaned_data/berkeley_rest_table.csv')
 crimeDf = pd.read_csv('cleaned_data/crime_data_table.csv')
 dentDf = pd.read_csv('cleaned_data/dentists_table.csv')
 openDf = pd.read_csv('cleaned_data/open_table_berkeley.csv')
+openDf = openDf[['Lat', 'Lon', 'DBA']]
 docDf = pd.read_csv('cleaned_data/physicians_table.csv')
 houseDf = pd.read_csv('cleaned_data/rentals_table.csv')
 schoolDf = pd.read_csv('cleaned_data/schools_table.csv')
@@ -41,4 +42,4 @@ def dataRequest():
     return json.dumps(df.to_dict('list'))
 
 if __name__ == "__main__":
-    app.run(port=8050)
+    app.run(port=6080)
