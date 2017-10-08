@@ -35,6 +35,7 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
+      setMapOnAll(null);
       markers[0].setMap(null);
       markers = []
       markers.push(marker);
@@ -47,13 +48,39 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 function changeFilter(value) {
+  setMapOnAll(null);
   document.getElementById('filter').textContent = value;
+  $(function() {
+        $.ajax({
+            url: '/dataRequest',
+            data: {'lat': last_marker.getPosition().lat(), 'lon': last_marker.getPosition().lng(), 'filter': document.getElementById('filter').textContent},
+            type: 'POST',
+            success: function(response) {
+                var responseData = JSON.parse(response);
+                for(var i = 0; i < responseData['DBA'].length; i++) {
+                  var marker = new google.maps.Marker({
+                      position: {lat: responseData['Lat'][i], lng: responseData['Lon'][i]},
+                      label: responseData['DBA'][i],
+                      map: map
+                  });
+                  markers.push(marker);
+                }
+                map.setZoom(18);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+  });
+
+
 }
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
-  for (var i = 1; i < markers.length; i++) {
-    markers[i].setMap(map);
+  while (markers.length > 1) {
+    markers[markers.length - 1].setMap(map);
+    markers.pop();
   }
 }
 
@@ -66,21 +93,7 @@ function showMarkers() {
   setMapOnAll(map);
 }
 
-$(function() {
-    $('#btnFilter').click(function() {
-        $.ajax({
-            url: '/dataRequest',
-            data: {'lat': last_marker.getPosition().lat(), 'lon': last_marker.getPosition().lng(), 'filter': 'Restaurants'},
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    });
-});
+
 
 
 // $("#map").change(function() {
