@@ -14,3 +14,18 @@ body {
 #topBar {
   border-radius: 5px
 }
+#filter {
+  padding-left: 50px;
+  font-weight: bold;
+  color: #000080;
+}
+.dropdown {
+  padding-left: 50px;
+  padding-top: 1px;
+}
+.dropdown-item {
+  background-color: #ffb347;
+}
+.dropdown-menu {
+  margin-left: 50px;
+}
