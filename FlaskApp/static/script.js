@@ -3,6 +3,7 @@ var map;
 var filter;
 var markers = [];
 var last_marker;
+var markerDict = {};
 
 function initMap() {
   var uluru = {lat: 37.8716, lng: -122.2727};
@@ -47,6 +48,7 @@ function geocodeAddress(geocoder, resultsMap) {
   });
 }
 
+
 function changeFilter(value) {
   setMapOnAll(null);
   document.getElementById('filter').textContent = value;
@@ -60,9 +62,19 @@ function changeFilter(value) {
                 for(var i = 0; i < responseData['DBA'].length; i++) {
                   var marker = new google.maps.Marker({
                       position: {lat: responseData['Lat'][i], lng: responseData['Lon'][i]},
-                      label: responseData['DBA'][i],
+                    //  label: responseData['DBA'][i],
                       map: map
                   });
+                  marker.set("id", i);
+                  var infoString = '<div><strong>' + responseData['DBA'][i] + '</strong>' +
+                  responseData['B1_FULL_ADDRESS'][i] + '</div>'
+                  markerDict[i] = infoString;
+                  var infowindow = new google.maps.InfoWindow();
+                  google.maps.event.addListener(marker, 'click', function() {
+                  infowindow.setContent(markerDict[marker.get("id")]);
+                  infowindow.open(map, this);
+                  console.log(marker);
+            });
                   markers.push(marker);
                 }
                 map.setZoom(18);

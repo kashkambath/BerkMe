@@ -1,5 +1,5 @@
 body {
-  background-color: #fff8dc;
+  background-color: goldenrod;
 }
 #map {
   width: 100%;
@@ -15,17 +15,21 @@ body {
   border-radius: 5px
 }
 #filter {
-  padding-left: 50px;
+  padding-left: 0px;
   font-weight: bold;
   color: #000080;
+  width: 100px
 }
+
 .dropdown {
   padding-left: 50px;
   padding-top: 1px;
+  /*background-color: #ffb347;*/
 }
 .dropdown-item {
-  background-color: #ffb347;
+  /*background-color: #ffb347;*/
 }
 .dropdown-menu {
   margin-left: 50px;
+  background-color: #ffb347;
 }
