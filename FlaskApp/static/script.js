@@ -58,6 +58,7 @@ function changeFilter(value) {
             data: {'lat': last_marker.getPosition().lat(), 'lon': last_marker.getPosition().lng(), 'filter': document.getElementById('filter').textContent},
             type: 'POST',
             success: function(response) {
+                console.log(response);
                 var responseData = JSON.parse(response);
                 for(var i = 0; i < responseData['DBA'].length; i++) {
                   var marker = new google.maps.Marker({
@@ -66,8 +67,7 @@ function changeFilter(value) {
                       map: map
                   });
                   marker.set("id", i);
-                  var infoString = '<div><strong>' + responseData['DBA'][i] + '</strong>' +
-                  responseData['B1_FULL_ADDRESS'][i] + '</div>'
+                  var infoString = '<div><strong>' + responseData['DBA'][i] + '</strong>' + '</div>'
                   markerDict[i] = infoString;
                   var infowindow = new google.maps.InfoWindow();
                   google.maps.event.addListener(marker, 'click', function() {

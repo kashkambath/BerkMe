@@ -1,4 +1,4 @@
-,address,aggregate_score,category,Lat,Lon,name,phone_number,price_quartile,reservation_url,restaurant_site,review_count
+,address,aggregate_score,category,Lat,Lon,DBA,phone_number,price_quartile,reservation_url,restaurant_site,review_count
 80,41 Tunnel Road,,"['Californian', 'Contemporary American', 'Organic']",37.8574760,-122.2420200,Meritage at the Claremont,,$$$,http://www.opentable.com/restaurant/profile/362,www.fairmont.com/claremont-berkeley/dining/meritage/,
 7,100 Seawall Drive,,"['Seafood', 'Steak', 'Sushi']",37.8630620,-122.3173560,Skates on the Bay,,$$,http://www.opentable.com/restaurant/profile/1067,skatesonthebay.com/page/home,
 62,1919 Fourth Street,,"['Seafood', 'Steak', 'American']",37.8682070,-122.2998050,Spenger's Fresh Fish Grotto,,$$,http://www.opentable.com/restaurant/profile/6724,www.Spengers.com,
