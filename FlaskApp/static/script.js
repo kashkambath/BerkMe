@@ -2,6 +2,8 @@ var map;
 
 var filter;
 var markers = [];
+var last_marker;
+
 function initMap() {
   var uluru = {lat: 37.8716, lng: -122.2727};
   map = new google.maps.Map(document.getElementById('map'), {
@@ -15,6 +17,7 @@ function initMap() {
   });
   markers.push(marker);
   var geocoder = new google.maps.Geocoder();
+  last_marker = marker;
 
   document.getElementById('searchbtn').addEventListener('click', function() {
     geocodeAddress(geocoder, map);
@@ -36,6 +39,7 @@ function geocodeAddress(geocoder, resultsMap) {
       markers = []
       markers.push(marker);
       console.log("Marker 2");
+      last_marker = marker;
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
@@ -61,6 +65,24 @@ function clearMarkers() {
 function showMarkers() {
   setMapOnAll(map);
 }
+
+$(function() {
+    $('#btnFilter').click(function() {
+        $.ajax({
+            url: '/dataRequest',
+            data: {'lat': last_marker.getPosition().lat(), 'lon': last_marker.getPosition().lng(), 'filter': 'Restaurants'},
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+
+
 // $("#map").change(function() {
 //   initMap();
 // });
