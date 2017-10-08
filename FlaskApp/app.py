@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return render_template('index.html')
+    return render_template('welcome.html')
 
 @app.route("/home")
 def home():
-    return render_template('welcome.html')
+    return render_template('index.html')
 
 restDf = pd.read_csv('cleaned_data/berkeley_rest_table.csv')
 crimeDf = pd.read_csv('cleaned_data/crime_data_table.csv')
