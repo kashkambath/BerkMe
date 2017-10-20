@@ -39,6 +39,7 @@ def dataRequest():
     df = filterDfMap[flter]
     df['dist'] = df.apply(dist, axis=1)
     df = df[df.dist < radius]
+    df.drop(['Unnamed: 0'], axis=1, inplace=True)
     return json.dumps(df.to_dict('list'))
 
 if __name__ == "__main__":

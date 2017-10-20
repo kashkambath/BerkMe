@@ -1,6 +1,7 @@
 body {
-  background-color: goldenrod;
+  background: linear-gradient(45deg, red, goldenrod);
 }
+
 #map {
   width: 100%;
   height: 500px;
@@ -22,7 +23,7 @@ body {
 }
 
 .dropdown {
-  padding-left: 50px;
+  padding-left: 75px;
   padding-top: 1px;
   /*background-color: #ffb347;*/
 }
