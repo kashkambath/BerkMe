@@ -6,6 +6,6 @@ Make sure you have python3 installed. To install python3 on Mac, visit https://d
 
 If you want to see whether you have python3 installed, type `which python3`.
 
-To install the necessary requirements, run `pip3 install requirements.txt`.
+To install the necessary requirements, run `pip3 install -r requirements.txt`.
 
 To run BerkMe, run app.py from inside the FlaskApp folder. 
